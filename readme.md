@@ -16,6 +16,13 @@ One of the core principles of the MCT Timer project is accessibility. The websit
 - Spotify playlist support: Trainers can attach a public Spotify playlist to a timer session and play it from the countdown page.
 
 
+![Timer setup page](docs/images/setup-page.png)
+
+The countdown page shows the remaining time and resume-at clock, the trainer's main message, an optional showcase video (top right), and an embedded Spotify playlist player (bottom right) when a playlist has been attached to the session.
+
+![Countdown page with Spotify playlist and showcase video](docs/images/countdown-spotify-video.png)
+
+
 ## Architecture
 
 The project contains the following resources deployed in Azure:
@@ -50,6 +57,7 @@ The setup page also supports:
 
 - AI-generated background: creates a one-off background from the session title and context when Azure OpenAI image generation is configured. If configuration is missing or generation fails, the timer shows a friendly message and keeps the standard background.
 - Feeling lucky Bing background: loads the latest Bing image of the day on each countdown page refresh.
+- Custom background upload: pick a PNG, JPEG, or WebP image (up to 4 MB) from the setup page. When provided, the uploaded image is used as the countdown background and overrides both the Bing daily image and AI-generated backgrounds. Uploads are saved under `wwwroot/uploads/session/` with a randomized name and are not associated with any user account.
 - Showcase media: displays an image, animated GIF, video file, YouTube video, or Vimeo video above the message editor for advertisements, upcoming topics, references, or instructor promotional content. Media must be a public URL; local file paths must be uploaded or hosted first. Videos autoplay muted when browser policy allows it.
 - Quick countdown controls: **+1 min** and **+5 min** buttons on the countdown page extend the active timer without restarting the session.
 
